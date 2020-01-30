@@ -28,7 +28,7 @@ Guión básico:
 		- Responder a la pregunta ¿Por qué necesito esto? --> Usar sólo Flutter si nos va a ayudar a algo
 		- Procedimiento en iOS y Android muy muy parecido
 		- Te dan la posibilidad, utilízalo si te va a ser útil, pero conociendo las limitaciones
-		- En el fondo no deja de ser una buena forma de ir trasladando una App Android o iOS a Flutter
+		- En el fondo no deja de ser una buena forma de ir trasladando una App Android o iOS a Flutter 
 
 #################
 
