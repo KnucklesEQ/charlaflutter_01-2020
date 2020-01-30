@@ -9,3 +9,6 @@ https://www.meetup.com/es-ES/Vigo-Android-Developer-Group/events/267885573/
 
 ## Código Android y Flutter
 Doy más detalles del código mostrado durante la presentación dentro de la carpeta "android_app"
+
+## Notas
+Adjunto en el repositorio el archivo de notas en el que fui recopilando la información que creía oportuno dar durante la charla, así como la estructuración de la misma.
