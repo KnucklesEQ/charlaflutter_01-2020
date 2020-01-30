@@ -1,0 +1,79 @@
+Add-to-app
+
+Fuente principal de información:
+	- https://flutter.dev/docs/development/add-to-app
+
+Guión básico:
+	- Bloque 1: Presentación
+		- Quién soy
+		- De qué vamos a hablar (básico) 
+	- Bloque 2: Flutter
+		- Pregunta gancho: ¿Por qué necesito esto?
+		- Qué es Flutter
+		- Para qué sirve realmente Flutter
+	- Bloque 3: Add-to-app
+		- Antes más complicado, a partir de la versión 1.12 más sencillo
+		- Limitaciones
+		- Pre-requisitos
+		- Live coding, explicar los siguientes puntos: 
+			- Cómo crear o importar un módulo Flutter dentro de un proyecto Android ya creado (comentar diferencias entre plugin, package y módulo)
+			- Mostrar dónde Android Studio realiza los cambios a nivel de configuración
+			- Ver cómo se añade un Flutter Activity, así como el código básico para lanzar el módulo
+			- Comentar el concepto de Flutter Engine (y el Warm up para que los tiempos de carga sean más cortos)
+		- Otros detalles de Add-to-App:
+			- Más allá de Flutter Activity --> Flutter Activity Translucent & Flutter Fragment
+			- Compatibilidad Kotlin/Java y Swift/Objective-C
+			- Flutter Attach y utilización de herramientas de debugging propias de Flutter (incluyendo Hot Reload)
+	- Bloque 4: Conclusiones
+		- Responder a la pregunta ¿Por qué necesito esto? --> Usar sólo Flutter si nos va a ayudar a algo
+		- Procedimiento en iOS y Android muy muy parecido
+		- Te dan la posibilidad, utilízalo si te va a ser útil, pero conociendo las limitaciones
+		- En el fondo no deja de ser una buena forma de ir trasladando una App Android o iOS a Flutter
+
+#################
+
+Notas rápidas: 
+
+Qué es Flutter? Un poco más allá de la descripción rápida
+	- Por qué es distinto a Jetpack Compose o React Native
+	- ¿Por qué existe? Netflix App se ve como Netflix App y no como Android App o iOS App (ejemplo de las 6 apps más exitosas (y nativas) en las dos plataformas)
+	- No sólo el diseño, también el Look & Feel (animaciones, la "física"...)
+	- Flutter consigue un diseño igual en ambas plataformas, y el look & feel adaptada a cada una
+	- Estructura interna de Flutter: No bridge, compile to machine code, corre sobre metal. "Paints directly to GPU" (se supone que es donde gana en flexibilidad)
+	- Custom graphics. Custom motion
+	- Si quieres algo que se vea como una app al uso en iOS o Android, NO TE HACE FALTA Flutter
+	- A futuro: Flutter compatible con "todas" las pantallas (funciona sobre C, y eso en principio va sobre "casi" todo). Por ahora web (beta) y desktop (MacOS alpha)
+
+Add a little bit of Flutter (por ejemplo, zonas con un diseño muy concreto, darle soporte en iOS y Android y no matarnos a hacerlo desde cero en cada una...)
+	- Le han dado un lavado de cara en la versión 1.12 de Flutter
+	- Hablar de las limitaciones
+
+Prerrequisitos y otros detalles:
+  - Prerrequisito: Android Studio 3.6 (aunque va más o menos bien con 3.5)
+  - Prerrequisito: Flutter plugin (además de todo el SDK, obviamente)
+  - Al importar módulo, lo primero: Sync el build.graddle
+  - Lo segundo: hay que configurar dónde está instalado el Dart SDK
+  - Qué hace Android Studio: 
+  	- En build.graddle de dentro de la carpeta 'app' --> Source Compatibility y Target Compatibility con Java 1.8
+  	- Además de en build.graddle/dependencias (carpeta app), podemos ver que ha añadido cosas en el settings.graddle (carpeta graddle)
+
+Live coding, qué comentar:
+	- Import vía Android Studio: Lo que hace, básicamente, es añadir el módulo Flutter como una dependencia más
+	- Ejemplo de uso de shaders (cosillas de Skia)
+	- Warm up del Flutter Engine desde el comienzo (evitar la latencia de arrancarlo al momento)
+	- Hay comunicación entre pantallas Flutter y Android (a través del Intent)
+
+Limitaciones:
+  - Sólo permite importar un único módulo Flutter (dentro de ese módulo podemos tener entes independientes y redirigir vía Intent lo que deseamos abrir, pero módulo sólo uno) y no se permite utilizar dentro de views Android (o bien FlutterActivity o bien FlutterFragment)
+  - Flutter in background... nope (dicen que Work in Progress)
+  - Tiempo de carga
+
+Cosas guays:
+ 	- Lo podemos hacer tanto desde Kotlin como desde Java (en iOS tanto desde Swift como desde Objective-C)
+ 	- Los módulos Flutter pueden interactuar con la plataforma (Android en este caso)
+ 	- Las herramientas de debugging de Flutter están disponibles, así como el Hot Reload
+
+Frases:
+	- "Flutter Engine: The FlutterEngine is the container through which Dart code can be run in an Android application."
+	- "Flutter está pensado para interfaces, pero el módulo puede utilizarse también sólo para procesamiento de datos."
+	- "Using a FlutterFragment requires forwarding a number of calls from an Activity to ensure that the internal Flutter app behaves as expected. Use FlutterActivity is recommended"
